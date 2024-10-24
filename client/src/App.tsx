@@ -1,14 +1,20 @@
-import { Outlet } from 'react-router-dom';
-
-import Navbar from './components/Navbar';
+import { Outlet } from 'react-router-dom'; 
+import Header from './components/Header';  
+import Footer from './components/Footer';  
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <main className='container pt-5'>
+    <div className="App">
+      {/* Header component */}
+      <Header />
+      
+      {/* Main content section that will change based on the route */}
+      <main className="main-content">
         <Outlet />
       </main>
+      
+      {/* Footer component */}
+      <Footer />
     </div>
   );
 }
