@@ -7,8 +7,6 @@ import {
     type Sequelize,
   } from 'sequelize';
 
-//   import { User } from '../models/user';
-
   export class Fridge extends Model<InferAttributes<Fridge>, InferCreationAttributes<Fridge>>{
     declare id: CreationOptional<number>;
     declare name: string;
