@@ -42,18 +42,22 @@ const Home = () => {
     }
 
     return (
-        <>
+        <div className="home">
             {
                 !loginCheck ? (
-                    <div className='login-notice'>
-                        <h1>
-                            Login to view all your friends!
-                        </h1>
-                    </div>
+                    <section className="welcome">
+                        <h1>Welcome to DishUp!</h1>
+                        <p>Discover recipes based on the ingredients you already have.</p>
+                        <div className="cta-buttons">
+                            <a href="/login" className="btn">Log In</a>
+                            <a href="/signup" className="btn">Sign Up</a>
+                        </div>
+                    </section>
                 ) : (
                     <UserList users={users} />
-                )}
-        </>
+                )
+            }
+        </div>
     );
 };
 

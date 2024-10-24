@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: transparent; /* No background color */
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -27,6 +35,11 @@ header, footer {
   box-shadow: none; /* Ensure no shadow effect */
 }
 
+.logo h1 {
+  color: #333; /* Dark text to keep it readable */
+  font-size: 2rem;
+}
+
 header h1 {
   margin: 0;
   font-size: 2rem;
@@ -36,5 +49,28 @@ header h1 {
   flex: 1; /* Makes sure the content stretches between header and footer */
   padding: 2rem;
   background-color: #ffffff; /* White content area */
+}
+
+/* NAVBAR Styling*/
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333; /* Dark text for the navbar links */
+  font-size: 1.2rem;
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+nav ul li a:hover {
+  color: #E0E0E0; /* Light gray hover effect */
 }
 
