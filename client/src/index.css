@@ -42,6 +42,9 @@ nav{
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ===== HOMEPAGE ===== */
+
 .homepage{
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -51,6 +54,21 @@ nav{
 }
 .home-food-image{
   height: 400px;
+}
+.how-section{
+  margin-top: 280px;
+  margin-bottom: 200px;
+  text-align: center;
+}
+.how-section-steps-container{
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.how-section-steps-container-card{
+  height: 400px;
+  background-color: #c4c4c4;
 }
 
 .logout-btn{
