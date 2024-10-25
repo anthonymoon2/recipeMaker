@@ -96,6 +96,86 @@ nav{
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== LOGIN PAGE ===== */
+
+/* Center the login form */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: transparent; /* Soft background color */
+}
+/* Login card styling */
+.login-form {
+  width: 300px;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin-top: -300px;
+}
+.login-form:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* Header in login form */
+.login-form h1 {
+  font-family: 'Titan One', sans-serif;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Label styling */
+.form-group label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Input styling */
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #FF8A33;
+  box-shadow: 0 0 8px rgba(255, 138, 51, 0.3);
+  outline: none;
+}
+
+/* Button styling */
+.btn-primary {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #FF8A33;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e6771a;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
 .logout-btn{
   background-color: transparent;
   border: none;
