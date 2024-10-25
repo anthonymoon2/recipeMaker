@@ -7,10 +7,11 @@
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Logo on the left, Navbar on the right */
   align-items: center;
   padding: 1rem 2rem;
-  background-color: transparent; /* No background color */
+  background-color: transparent;
+  position: relative; /* So the logo can be positioned absolutely */
 }
 
 body, html {
@@ -26,17 +27,45 @@ body, html {
   min-height: 100vh; /* Full viewport height */
 }
 
-header, footer {
-  background-color: transparent;  /* Completely transparent */
-  color: #333;  /* Dark text for readability, or adjust as needed */
+
+footer {
+  background-color: transparent;  /* Keep the background transparent */
+  color: #333;  /* Dark text color for contrast */
   padding: 1rem;
   text-align: center;
-  border: none; /* Remove any borders */
-  box-shadow: none; /* Ensure no shadow effect */
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #333;  /* Dark text color */
+}
+
+footer ul li a:hover {
+  color: #4CAF50;  
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transform: rotate(-10deg); /* Tilt the logo */
+}
+
+.logo-img {
+  width: 80px; /* Adjust size */
+  height: auto;
 }
 
 .logo h1 {
-  color: #333; /* Dark text to keep it readable */
+  color: #333; 
   font-size: 2rem;
 }
 
@@ -48,15 +77,20 @@ header h1 {
 .main-content {
   flex: 1; /* Makes sure the content stretches between header and footer */
   padding: 2rem;
-  background-color: #ffffff; /* White content area */
+  background-color: #ffffff; 
 }
 
+
 /* NAVBAR Styling*/
+
+nav {
+  margin-left: auto;
+}
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.5rem; /* Space between links */
 }
 
 nav ul li {
@@ -64,13 +98,29 @@ nav ul li {
 }
 
 nav ul li a {
-  text-decoration: none;
-  color: #333; /* Dark text for the navbar links */
+  font-family: 'Titan One', sans-serif;
+  color: #333;
   font-size: 1.2rem;
-  transition: color 0.3s ease; /* Smooth hover effect */
+  position: relative;
+  text-decoration: none; /* No underline by default */
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #E0E0E0; /* Light gray hover effect */
+  color: #4CAF50; /* Green color on hover */
 }
 
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background-color: #4CAF50; /* Fresh green underline */
+  bottom: -5px; /* Position below the text */
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%; /* Full width underline on hover */
+}
