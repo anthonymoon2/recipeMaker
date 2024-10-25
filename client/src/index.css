@@ -72,7 +72,7 @@ nav{
   font-size: 1.5rem;
   color: black; /* Warm orange for headings */
   margin-bottom: 10px;
-  font-family: 'Titan One', sans-serif;
+  font-family: "Outfit", sans-serif;
   text-align: center;
 }
 .how-section-steps-container-card p {
@@ -125,7 +125,7 @@ nav{
 
 /* Header in login form */
 .login-form h1 {
-  font-family: 'Titan One', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1.8rem;
   color: #333;
   margin-bottom: 1rem;
@@ -135,12 +135,13 @@ nav{
 .form-group {
   margin-bottom: 1.5rem;
   text-align: left;
+  font-family: "Outfit", sans-serif;
 }
 
 /* Label styling */
 .form-group label {
   font-size: 0.9rem;
-  color: #666;
+  color: black;
 }
 
 /* Input styling */
