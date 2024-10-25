@@ -8,9 +8,7 @@ interface UserListProps {
     users: UserData[] | null; // users can be an array of UserData objects or null
 }
 
-interface IngredientList {
-    //ingredients: 
-}
+
 
 const UserList: React.FC<UserListProps> = ({ users }) => {
     return (
