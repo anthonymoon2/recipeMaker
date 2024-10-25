@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { retrieveUsers } from "../api/userAPI";
 import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
-import UserList from '../components/Users';
+import UserIngredientsComponent from '../components/IngredientCard';
 import auth from '../utils/auth';
 
 const Home = () => {
@@ -41,6 +41,9 @@ const Home = () => {
         return <ErrorPage />;
     }
 
+    // assuming the logged in user is the first user
+    const loggedInUser = users[0];
+
     return (
         <>
             {
@@ -68,14 +71,13 @@ const Home = () => {
                                     2
                                 </div>
                                 <div className="how-section-steps-container-card">
-                                    3
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 ) : (
-                    <UserList users={users} />
-                    
+                    loggedInUser && <UserIngredientsComponent loggedInUser={loggedInUser} />
                 )}
         </>
     );
