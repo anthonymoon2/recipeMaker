@@ -56,12 +56,43 @@ footer ul li a:hover {
   position: absolute;
   top: 10px;
   left: 10px;
-  transform: rotate(-10deg); /* Tilt the logo */
+  transform: rotate(-25deg); /* Tilt the logo */
 }
 
+/* Define the bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at original position */
+  }
+  50% {
+    transform: translateY(-20px); /* Move up by 20px at the midpoint */
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px #FF8A33, 0 0 30px #FF8A33, 0 0 50px #FF8A33;
+  }
+  50% {
+    box-shadow: 0 0 20px #FF8A33, 0 0 40px #FF8A33, 0 0 60px #FF8A33;
+  }
+  100% {
+    box-shadow: 0 0 10px #FF8A33, 0 0 30px #FF8A33, 0 0 50px #FF8A33;
+  }
+}
+
+
+/* Apply the animation to the logo */
 .logo-img {
-  width: 80px; /* Adjust size */
+  width: 80px;
   height: auto;
+  transform: rotate(-10deg); /* Tilt the logo */
+
+  /* Apply the glow using drop-shadow to follow the logo's shape */
+  filter: drop-shadow(0 0 15px #FF8A33);
+  
+  /* Bounce animation */
+  animation: bounce 0.6s ease-out;
 }
 
 .logo h1 {
