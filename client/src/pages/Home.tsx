@@ -46,12 +46,36 @@ const Home = () => {
             {
                 !loginCheck ? (
                     <div className='login-notice'>
-                        <h1>
-                            Login to view all your friends!
-                        </h1>
+                        <div className='homepage'>
+                            <div className='homepage-left'>
+                                <h1>
+                                    Create dishes using the ingredients in your fridge
+                                </h1>
+                            </div>
+                            <div className="homepage-right">
+                                <img className="home-food-image" src="./images/food.png"></img>
+                            </div>
+                        </div>
+
+                        <div className="how-section">
+                            <h2>How it works</h2>
+
+                            <div className="how-section-steps-container">
+                                <div className="how-section-steps-container-card">
+                                    1
+                                </div>
+                                <div className="how-section-steps-container-card">
+                                    2
+                                </div>
+                                <div className="how-section-steps-container-card">
+                                    3
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <UserList users={users} />
+                    
                 )}
         </>
     );

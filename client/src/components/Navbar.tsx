@@ -17,25 +17,30 @@ const Navbar = () => {
   }, [loginCheck]);
 
   return (
-    <div className='display-flex justify-space-between align-center py-2 px-5 mint-green'>
-      <h1>Authentication Review</h1>
-      <div>
-        {!loginCheck ? (
-          <button className='btn' type='button'>
-            <Link to='/login'>Login</Link>
-          </button>
-        ) : (
-          <button
-            className='btn'
-            type='button'
-            onClick={() => {
-              auth.logout();
-            }}
-          >
-            Logout
-          </button>
-        )}
-      </div>
+    <div>
+      {!loginCheck ? ( // if login check is false (not logged in)
+        <header>
+          <nav>
+            <Link to="/"> dishUp </Link>
+
+            <div className="nav-right">
+              <Link to="/"> Sign Up </Link>
+              <Link to='/login'>Login</Link>
+            </div>
+          </nav>
+        </header>
+      ) : ( // if logged in - change navbar 
+        <header>
+          <nav>
+            <Link to="/"> dishUp </Link>
+
+            <div className="nav-right">
+              <Link to="/"> My Recipes </Link>
+              <button className='logout-btn' type='button' onClick={() => {auth.logout()}}>Logout</button>
+            </div>
+          </nav>
+        </header>
+      )}
     </div>
   );
 };
