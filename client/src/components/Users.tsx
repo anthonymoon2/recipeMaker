@@ -18,13 +18,21 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
             <h2 className="pb-5">
                Hey {auth.getProfile().username}, add ingredients to your fridge!
             </h2>
+
+            <div className='ingredient-input-form-container'>
+                <input className="ingredient-input-form-name" placeholder='apple'></input>
+                <button className="add-ingredient-button">
+                    add ingredient!
+                </button>
+            </div>
+
             {users && users.map((user) => (
-                <div className="row align-center mb-5" key={user.id}>
-                    <div className="col-md-6">
-                        <h3>{user.id}. {user.username}</h3>
+                <div className="ingredient-card">
+                    <div className="ingredient-card-ingredient">
+                        {user.username}
                     </div>
-                    <div className="col-md-6">
-                        <h4><a href={`mailto:${user.email}`}>{user.email}</a></h4>
+                    <div className="ingredient-card-delete-button-container">
+                        <button className="ingredient-card-delete-button">x</button>
                     </div>
                 </div>
             ))}

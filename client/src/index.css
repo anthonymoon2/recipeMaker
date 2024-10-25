@@ -74,6 +74,53 @@ nav{
 .logout-btn:hover:after{
   width: 100%;
 }
+
+/* ===== logged in homepage ===== */
+.ingredient-card{
+  background-color: rgb(34, 34, 34);
+  width: 400px;
+  margin-bottom: 10px;
+  padding: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.ingredient-input-form-container{
+  margin-bottom: 20px;
+}
+.ingredient-input-form-name{
+  width: 400px;
+  height: 30px;
+  margin-right: 10px;
+}
+.add-ingredient-button{
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+.add-ingredient-button:hover{
+  cursor: pointer;
+  color: rgb(30, 141, 30);
+}
+.ingredient-card-ingredient{
+  font-size: 20px;
+  color: white;
+}
+.ingredient-card-delete-button{
+  color: rgb(220, 11, 11);
+  font-size: 35px;
+  background-color: transparent;
+  border: 0px;
+  transition: transform 0.2s ease;
+}
+.ingredient-card-delete-button:hover{
+  cursor: pointer;
+  transform: scale(1.3);
+  transition: transform 0.2s ease;
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
