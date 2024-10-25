@@ -1,3 +1,79 @@
+header{
+  background-color: #ffffff;
+  margin-bottom: 50px;
+}
+header a{
+  text-decoration: none !important;
+  color: black;
+  position: relative;
+}
+header a:hover{
+  color: black;
+}
+header a:after{
+  content: "";
+  position: absolute;
+  background-color: black;
+  height: 3px;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+  width: 0%;
+}
+header a:hover:after{
+  width: 100%;
+}
+nav{
+  display: flex;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%;
+  justify-content: space-between;
+  font-size: 25px;
+  font-family: "Outfit", sans-serif;
+  align-items: center;
+}
+.nav-right{
+  font-size: 15px;
+  display: flex;
+  gap: 20px;
+}
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+.homepage{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.homepage-left{
+  align-content: center;
+}
+.home-food-image{
+  height: 400px;
+}
+
+.logout-btn{
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+.logout-btn:after{
+  content: "";
+  position: absolute;
+  background-color: black;
+  height: 3px;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+  width: 0%;
+}
+.logout-btn:hover{
+  cursor: pointer;
+}
+.logout-btn:hover:after{
+  width: 100%;
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
