@@ -66,9 +66,34 @@ nav{
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
-.how-section-steps-container-card{
-  height: 400px;
-  background-color: #c4c4c4;
+.how-section-steps-container-card h3 {
+  font-size: 1.5rem;
+  color: black; /* Warm orange for headings */
+  margin-bottom: 10px;
+  font-family: 'Titan One', sans-serif;
+  text-align: center;
+}
+.how-section-steps-container-card p {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+}
+.how-section-steps-container-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px; /* Adjust height as needed */
+  padding: 1.5rem;
+  background-color: #f5f5f5; /* Lighter background for a modern look */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.how-section-steps-container-card:hover {
+  transform: translateY(-5px); /* Lift up slightly on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .logout-btn{
