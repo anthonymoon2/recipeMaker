@@ -55,6 +55,8 @@ nav{
 .home-food-image{
   height: 400px;
 }
+
+/* ===== HOWTO PAGE ===== */
 .how-section{
   margin-top: 280px;
   margin-bottom: 200px;
@@ -106,7 +108,7 @@ nav{
   height: 100vh;
   background-color: transparent; /* Soft background color */
 }
-/* Login card styling */
+
 .login-form {
   width: 300px;
   padding: 2rem;
@@ -152,8 +154,8 @@ nav{
 }
 
 .form-input:focus {
-  border-color: #FF8A33;
-  box-shadow: 0 0 8px rgba(255, 138, 51, 0.3);
+  border-color: black;
+  box-shadow: 0 0 8px rgba(1, 52, 19, 0.3);
   outline: none;
 }
 
@@ -161,20 +163,17 @@ nav{
 .btn-primary {
   width: 100%;
   padding: 0.8rem;
-  background-color: #FF8A33;
-  color: #ffffff;
+   color: #ffffff;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  
 }
-
-.btn-primary:hover {
-  background-color: #e6771a;
-  transform: scale(1.05); /* Slightly enlarge on hover */
+.form-group:last-of-type {
+  margin-top: 50px; /* Adjust as needed */
 }
-
 
 .logout-btn{
   background-color: transparent;
