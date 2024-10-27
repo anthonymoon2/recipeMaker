@@ -1,3 +1,0 @@
-interface IngredientList {
-    //ingredients: 
-}

@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { retrieveUsers } from "../api/userAPI";
 import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
-import UserList from '../components/Users';
+import UserIngredientsComponent from '../components/IngredientCard';
 import auth from '../utils/auth';
 
 const Home = () => {
@@ -41,6 +41,9 @@ const Home = () => {
         return <ErrorPage />;
     }
 
+    // assuming the logged in user is the first user
+    const loggedInUser = users[0];
+
     return (
         <>
             {
@@ -70,15 +73,18 @@ const Home = () => {
                                     <p>Enter the ingredients you already have in your fridge.</p>
                                 </div>
                                 <div className="how-section-steps-container-card">
+
                                     <h3>3. Discover Recipes, Save, Cook, and Share</h3>
                                     <p>Browse personalized recipes that match your ingredients. Save recipes you love, follow easy steps to cook, and share your creations with friends.</p>
+
+                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 ) : (
-                    <UserList users={users} />
-                    
+                    loggedInUser && <UserIngredientsComponent loggedInUser={loggedInUser} />
                 )}
         </>
     );
