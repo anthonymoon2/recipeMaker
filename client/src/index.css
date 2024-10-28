@@ -1846,4 +1846,19 @@ form [type='radio'] {
   .align-content-center-xl {
     align-content: center;
   }
+
+  .recipe-container{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .recipe-card{
+    height: 400px;
+    background-color: #c4c4c4;
+    text-align: center;
+    padding-top: 3%;
+    border-radius: 7%;
+  }
+  
 }
