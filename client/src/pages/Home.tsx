@@ -1,21 +1,19 @@
 import { useState, useEffect, useLayoutEffect } from "react";
-import { retrieveUsers } from "../api/userAPI";
-import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
 import UserIngredientsComponent from '../components/IngredientCard';
 import auth from '../utils/auth';
+import { UserData } from "../interfaces/UserData";
 
 const Home = () => {
-
-    const [users, setUsers] = useState<UserData[]>([]);
     const [error, setError] = useState(false);
     const [loginCheck, setLoginCheck] = useState(false);
+    const [loggedInUser, setUpdateUser] = useState({} as UserData);
 
-    useEffect(() => {
-        if (loginCheck) {
-            fetchUsers();
+    useEffect(()=> {    
+        if (loginCheck){
+            setUpdateUser({id:auth.getProfile().id, username:auth.getProfile().username})
         }
-    }, [loginCheck]);
+    }, [loginCheck])
 
     useLayoutEffect(() => {
         checkLogin();
@@ -27,22 +25,9 @@ const Home = () => {
         }
     };
 
-    const fetchUsers = async () => {
-        try {
-            const data = await retrieveUsers();
-            setUsers(data)
-        } catch (err) {
-            console.error('Failed to retrieve tickets:', err);
-            setError(true);
-        }
-    }
-
     if (error) {
         return <ErrorPage />;
     }
-
-    // assuming the logged in user is the first user
-    const loggedInUser = users[0];
 
     return (
         <>

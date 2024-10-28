@@ -1,19 +1,14 @@
 import sequelize from '../config/connection.js';
 import { UserFactory } from './user.js';
-import { FridgeFactory } from './fridge.js';
-import { ReceipeFactory } from './recipe.js';
+import { IngredientFactory } from './ingredient.js';
 
 const User = UserFactory(sequelize);
-const Fridge = FridgeFactory(sequelize);
-const Recipe = ReceipeFactory(sequelize);
+const Ingredient = IngredientFactory(sequelize);
 
-// User has one fridge
-User.hasOne(Fridge);
-// Fridge belongs to one user
-Fridge.belongsTo(User);
-// Fridge has many recipes
-Fridge.hasMany(Recipe);
-// Recipes belong to the fridge
-Recipe.belongsTo(Fridge);
+/*
+import { RecipeFactory } from './recipe.js';
+const Recipe = RecipeFactory(sequelize);
+Recipe.belongsTo(User);
+*/
 
-export { User };
+export { User, Ingredient };
