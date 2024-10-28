@@ -50,13 +50,20 @@ const Home = () => {
 
                             <div className="how-section-steps-container">
                                 <div className="how-section-steps-container-card">
-                                    1
+                                    <h3>1. Sign Up or Log In</h3>
+                                    <p>Create an account or log in.</p>
                                 </div>
                                 <div className="how-section-steps-container-card">
-                                    2
+                                    <h3>2. Add Your Ingredients</h3>
+                                    <p>Enter the ingredients you already have in your fridge.</p>
                                 </div>
                                 <div className="how-section-steps-container-card">
+
+                                    <h3>3. Discover Recipes, Save, Cook, and Share</h3>
+                                    <p>Browse personalized recipes that match your ingredients. Save recipes you love, follow easy steps to cook, and share your creations with friends.</p>
+
                                     
+
                                 </div>
                             </div>
                         </div>
