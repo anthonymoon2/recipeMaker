@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link to="/"> dishUp </Link>
 
             <div className="nav-right">
-              <Link to="/"> My Recipes </Link>
+              <Link to="/MyRecipes"> My Recipes </Link>
               <button className='logout-btn' type='button' onClick={() => {auth.logout()}}>Logout</button>
             </div>
           </nav>
