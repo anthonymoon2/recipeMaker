@@ -9,20 +9,13 @@ interface UserListProps {
 }
 
 
-
 const UserList: React.FC<UserListProps> = ({ users }) => {
+
     return (
         <>
             <h2 className="pb-5">
-               Hey {auth.getProfile().username}, add ingredients to your fridge!
+               Hey {auth.getProfile().username}, these are your friends!
             </h2>
-
-            <div className='ingredient-input-form-container'>
-                <input className="ingredient-input-form-name" placeholder='apple'></input>
-                <button className="add-ingredient-button">
-                    add ingredient!
-                </button>
-            </div>
 
             {users && users.map((user) => (
                 <div className="ingredient-card">
