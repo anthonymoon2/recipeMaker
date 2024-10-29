@@ -66,23 +66,31 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
 
     // create new recipe object to send to backend
     const newRecipe: RecipeData = {
-      desc: null,
       ingredients: ingredientsList,
       recipeUser: loggedInUser.id,
-      result: null
+      title: null,
+      instructions: null
     };
 
     try{
       // call openAI api
       const generatedRecipe = await createRecipe(newRecipe);
-      // parse response from openAI API
-      //const parsedGeneratedRecipe = JSON.parse(generatedRecipe)
-      // Update `desc` with the result from the OpenAI API response
 
-      const updatedRecipe = { ...generatedRecipe, desc: generatedRecipe.result };
+      console.log(`ingredients: ${ingredientsList}`)
+      console.log(`recipe user: ${loggedInUser.id}`);
+      console.log(`recipe title: ${generatedRecipe.title}`);
+      console.log(`recipe instructions: ${generatedRecipe.instructions}`);
+
+      // create new recipe object with updated title and instructions received from API
+      const newAPIRecipe: RecipeData = {
+        ingredients: ingredientsList,
+        recipeUser: loggedInUser.id,
+        title: generatedRecipe.title,
+        instructions: generatedRecipe.instructions
+      };
 
       // Update local state to display new recipe
-      setRecipe((prevRecipes) => [...prevRecipes, updatedRecipe]);
+      setRecipe((prevRecipes) => [...prevRecipes, newAPIRecipe]);
     } catch (error) {
       console.error("Failed to create Recipe on frontend:", error);
     }
@@ -119,18 +127,22 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
 
           <button className="create-recipes-button" onClick={newRecipe}>Create Recipes</button>
 
-          <div className="full-recipes-container">
-            <h2>Created Recipes</h2>
-
-            <div className='recipes-container'>
-              {recipes.map((recipe, index) => (
-                <div className="recipe-card" key={index}>
-                  {recipe.desc}
-                </div>
-              ))}
-
+          {recipes.length > 0 ? ( // if there are recipes
+            <div className="full-recipes-container">
+              <h2>Created Recipes</h2>
+              <div className='recipes-container'>
+                {recipes.map((recipe, index) => (
+                  <div className="recipe-card" key={index}>
+                    <h5>{recipe.title}</h5>
+                    <p>{recipe.instructions}</p>
+                    <button className="save-recipe-button">Save Recipe</button>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          ):(
+            <div></div>
+          )}
         </div>
       ) : ( // if zero ingredients
         <h4>-No ingredients in your fridge yet.-</h4>

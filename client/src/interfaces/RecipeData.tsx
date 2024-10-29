@@ -1,7 +1,7 @@
 export interface RecipeData {
     ingredients: string;
-    desc: string | null;
     recipeUser: number | null;
-    result: string | null;
+    title: string | null;
+    instructions: string | null;
 }
   

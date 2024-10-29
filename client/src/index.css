@@ -96,7 +96,7 @@ nav{
 }
 .create-recipes-button{
   background-color: transparent;
-  right: 0px;
+  margin-bottom: 50px;
 }
 
 
@@ -117,7 +117,19 @@ nav{
   background-color: #555555;
   padding: 10px;
 }
-
+.save-recipe-button{
+  margin-top:25px;
+  background-color: rgb(48, 48, 48);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease,
+}
+.save-recipe-button:hover{
+  background-color: rgb(14, 115, 14);
+  transition: transform 0.3s ease,
+}
 /* ===== logged out HOMEPAGE ===== */
 
 .homepage{
