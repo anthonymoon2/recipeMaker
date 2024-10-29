@@ -1,7 +1,7 @@
 import { RecipeData } from '../interfaces/RecipeData';
 import Auth from '../utils/auth';
 
-const createRecipe = async ( body: RecipeData): Promise<RecipeData> => {
+const createRecipe = async ( body: RecipeData ): Promise< {title: string, instructions: string }> => {
     try {
         // call backend function to create recipe
         const response = await fetch(
@@ -19,7 +19,8 @@ const createRecipe = async ( body: RecipeData): Promise<RecipeData> => {
         } else {
             console.log('Recipe Created!');
         }
-        return data;
+
+        return { title: data.title, instructions: data.instructions };
     } catch (err) {
         console.log('Error from Recipe Creation: ', err);
         return Promise.reject('Could not create Ingredient');

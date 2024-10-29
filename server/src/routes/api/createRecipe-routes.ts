@@ -34,13 +34,23 @@ const formatPrompt = async (ingredients: string): Promise<string> => {
 };
 
 // Call the OpenAI API to get a response to the formatted prompt
-const promptFunc = async (ingredients: string): Promise<string> => {
+const promptFunc = async (ingredients: string): Promise<{title: string, instructions: string}> => {
     try {
       if (model) {
         // Call the OpenAI API to get a response to the formatted prompt
-        return await model.invoke(ingredients);
+        const response = await model.invoke(ingredients);
+
+        // Parse the response for title and instructions
+        const titleMatch = response.match(/Title:\s*(.*)/);
+        const instructionsMatch = response.match(/Instructions:\s*(.*)/s);
+    
+        const title = titleMatch ? titleMatch[1].trim() : 'Untitled Recipe';
+        const instructions = instructionsMatch ? instructionsMatch[1].trim() : 'Instructions not provided';
+
+        console.log("Full response from OpenAI:", title);
+        return { title, instructions }
       }
-      return 'No OpenAI API key provided. Unable to provide a response.';
+      throw new Error('No OpenAI API key provided. Unable to provide a response.');
     } catch (err) {
       console.error(err);
       throw err;
@@ -58,13 +68,15 @@ router.post('/', async (req: Request, res: Response) => {
         const formattedPrompt: string = await formatPrompt(ingredients);
 
         // create new recipe
-        // const newRecipe = await Recipe.create({ ingredients, desc, recipeUser});
+        //const newRecipe = await Recipe.create({ ingredients, desc, recipeUser});
 
-        const result: any = await promptFunc(formattedPrompt);
+        const generatedRecipe: any = await promptFunc(formattedPrompt);
 
-        console.log(`RESULT FROM OPEN API: ${result}`);
+        console.log(`RESULT FROM OPEN API title: ${generatedRecipe.title}`);
+        console.log(`RESULT FROM OPEN API instructions: ${generatedRecipe.instructions}`);
 
-        res.json({ result });
+        // send back generated Recipe to the frontend
+        res.json({ title: generatedRecipe.title, instructions: generatedRecipe.instructions });
     } catch (error: unknown) {
         if (error instanceof Error) {
         console.error('Error:', error.message);
