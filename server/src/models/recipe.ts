@@ -1,19 +1,26 @@
-import {
-    Model,
-    type InferAttributes,
-    type InferCreationAttributes,
-    type CreationOptional,
-    DataTypes,
-    type Sequelize,
-  } from 'sequelize';
+import { DataTypes, type Sequelize, Model, Optional} from 'sequelize';
 
-  export class Recipe extends Model<InferAttributes<Recipe>, InferCreationAttributes<Recipe>>{
-    declare id: CreationOptional<number>;
-    declare title: string;
-    declare instructions: string;
-  }
+interface RecipeAttributes {
+    id: number;
+    ingredients: string;
+    desc: string;
+    recipeUser: number;
+    result: string;
+}
 
-  export default function RecipeFactory(sequelize: Sequelize) {
+// setting id of recipe optional when being created because it will be auto incremently addeed
+interface RecipeCreationAttributes extends Optional<RecipeAttributes, 'id'> {}
+
+// ensure Recipes has all attributes defined in RecipeAttributes interface
+export class Recipe extends Model<RecipeAttributes, RecipeCreationAttributes> implements RecipeAttributes{
+    public id!: number;
+    public ingredients!: string;
+    public desc!: string;
+    public recipeUser!: number;
+    public result!: string;
+}
+
+export default function RecipeFactory(sequelize: Sequelize): typeof Recipe {
     Recipe.init(
         {
             id: {
@@ -21,21 +28,31 @@ import {
                 autoIncrement: true,
                 primaryKey: true,
             },
-            title: {
+            ingredients: {
                 type: DataTypes.STRING,
+                allowNull: true,
             },
-            instructions: {
+            desc: {
                 type: DataTypes.STRING,
+                allowNull: true,
             },
+            recipeUser: {
+                type: DataTypes.INTEGER,
+                allowNull: true,
+            },
+            result: {
+                type: DataTypes.STRING,
+                allowNull: true, 
+            }
         },
         {
             sequelize,
-            modelName: 'receipe',
+            modelName: 'recipe',
         }
     );
 
     return Recipe;
-  };
+};
 
  
 
