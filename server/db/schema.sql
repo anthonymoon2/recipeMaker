@@ -3,3 +3,6 @@ DROP DATABASE IF EXISTS dishup_db;
 
 -- CREATE DATABASE
 CREATE DATABASE dishup_db;
+
+SELECT * FROM users;
+SELECT * FROM ingredients;
