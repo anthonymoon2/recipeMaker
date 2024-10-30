@@ -122,25 +122,28 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
       </div>
 
       {ingredients.length > 0 ? ( // if there is ingredients in the fridge 
-        <div className="fridge-container">
-          <div className="fridge">
-            {ingredients.map((ingredient, index) => (
-              <div className="ingredient-card" key={index}>
-                  <div className="ingredient-card-ingredient">
+        <div className="logged-in-container">
+          <div className="fridge-container">
+            <h3>{auth.getProfile().username}'s' Fridge</h3>
+            <div className="fridge">
+              {ingredients.map((ingredient, index) => (
+                <div className="ingredient-card" key={index}>
+                    <div className="ingredient-card-ingredient">
                       {ingredient.ingredientName}
-                  </div>
-                  <div className="ingredient-card-delete-button-container">
+                    </div>
+                    <div className="ingredient-card-delete-button-container">
                       <button className="ingredient-card-delete-button" onClick={() => destroyIngredient(ingredient.id)}>x</button>
-                  </div>
-              </div>
-            ))}
+                    </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <button className="create-recipes-button" onClick={newRecipe}>Create Recipes</button>
 
           {recipes.length > 0 ? ( // if there are recipes
             <div className="full-recipes-container">
-              <h2>Created Recipes</h2>
+              <h2>Generated Recipes</h2>
               <div className='recipes-container'>
                 {recipes.map((recipe, index) => (
                   <div className="recipe-card" key={index}>
@@ -156,7 +159,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
           )}
         </div>
       ) : ( // if zero ingredients
-        <h4>-No ingredients in your fridge yet.-</h4>
+        <h4>-No ingredients in your fridge yet-</h4>
       )}
     </div>
   );

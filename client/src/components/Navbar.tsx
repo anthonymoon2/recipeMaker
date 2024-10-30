@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link to="/"> dishUp </Link>
 
             <div className="nav-right">
-              <Link to="/"> Sign Up </Link>
+              <Link to="/signUp"> Sign Up </Link>
               <Link to='/login'>Login</Link>
             </div>
           </nav>
