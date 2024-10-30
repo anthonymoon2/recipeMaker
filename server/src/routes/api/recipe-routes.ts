@@ -4,6 +4,22 @@ import { Recipe } from '../../models/recipe.js';
 
 const router = express.Router();
 
+// api/recipesdb/delete
+router.delete('/delete', async (req: Request, res: Response) => {
+    const { id } = req.body;
+    console.log(req.body);
+    try {
+        Recipe.destroy({ 
+            where: {
+                id: id,
+            }
+        })
+        res.json({message: "recipe deleted!"});
+    } catch (error: any) {
+        res.status(400).json({ error: "could not delete recipe in backend" });
+    }
+})
+
 // Create a new recipe and add it to recipe table'
 // /api/recipesdb/
 router.post('/', async (req: Request, res: Response) => {
@@ -32,7 +48,7 @@ router.get('/:id', async (req: Request, res: Response) => {
                 recipeUser: userId,
             },
 
-            attributes: ['title', 'instructions'],
+            attributes: ['id', 'title', 'instructions'],
         });
         res.json(recipes)
     } catch (error) {

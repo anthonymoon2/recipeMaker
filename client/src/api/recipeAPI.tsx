@@ -1,4 +1,4 @@
-import { RecipeData } from '../interfaces/RecipeData';
+import { CreateRecipeData } from '../interfaces/CreateRecipeData';
 import Auth from '../utils/auth';
 
 const retrieveRecipes = async (recipeUserId: number | null) => {
@@ -24,8 +24,35 @@ const retrieveRecipes = async (recipeUserId: number | null) => {
         return [];
     }  
 }
+// api/recipesdb/delete
+const deleteRecipe = async ( body: number ) => {
+    try {
+        // call backend function to delete recipe
+        const response = await fetch(
+            `/api/recipesdb/delete`, {
+            method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${Auth.getToken()}`,
+                },
+            body: JSON.stringify({id: body})
+        })
+        const data = response.json();
 
-const createRecipe = async ( body: RecipeData ): Promise< {title: string, instructions: string }> => {
+        if(!response.ok) {
+          throw new Error('invalid API response when deleting recipe in the frontend!');
+        } else {
+            console.log('Recipe deleted!');
+        }
+
+        return data;
+    } catch (err) {
+        console.log('Error from Recipe deletion: ', err);
+        return Promise.reject('Could not delete Ingredient');
+    }
+}
+
+const createRecipe = async ( body: CreateRecipeData ): Promise< {id: number, title: string, instructions: string }> => {
     try {
         // call backend function to create recipe
         const response = await fetch(
@@ -43,15 +70,15 @@ const createRecipe = async ( body: RecipeData ): Promise< {title: string, instru
         } else {
             console.log('Recipe Created!');
         }
-
-        return { title: data.title, instructions: data.instructions };
+        console.log(data.id);
+        return { id: data.id, title: data.title, instructions: data.instructions };
     } catch (err) {
         console.log('Error from Recipe Creation: ', err);
         return Promise.reject('Could not create Ingredient');
     }
 }
 
-const addRecipeToDatabase = async( body: RecipeData ) => {
+const addRecipeToDatabase = async( body: CreateRecipeData ) => {
     try{
         console.log(body)
         // call backend function to create ingredient
@@ -76,4 +103,4 @@ const addRecipeToDatabase = async( body: RecipeData ) => {
     }
 }
 
-export { retrieveRecipes, createRecipe, addRecipeToDatabase }
+export { retrieveRecipes, deleteRecipe, createRecipe, addRecipeToDatabase }

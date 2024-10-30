@@ -59,8 +59,8 @@ const Home = () => {
                                 </div>
                                 <div className="how-section-steps-container-card">
 
-                                    <h3>3. Discover Recipes, Save, Cook, and Share</h3>
-                                    <p>Browse personalized recipes that match your ingredients. Save recipes you love, follow easy steps to cook, and share your creations with friends.</p>
+                                    <h3>3. Generate Recipes, save, and Cook</h3>
+                                    <p>Browse personalized recipes that match the ingredients you already have, save recipes you love, follow easy steps to cook. </p>
                                 </div>
                             </div>
                         </div>
