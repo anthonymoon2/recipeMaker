@@ -16,6 +16,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
   const [inputValue, setInputValue] = useState('');
   const [ingredients, setIngredients] = useState<IngredientData[]> ([]); 
   const [recipes, setRecipe] = useState<RecipeData[]> ([]); 
+  const [loading, setLoading] = useState(false);
 
   // call fetchIngredients function from ingredientsAPI 
   // useEffect loads once when page loads depending on loggedInUser.id
@@ -70,6 +71,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
 
   // calling openAI api to create recipes 
   const newRecipe = async() => {
+    setLoading(true); // Set loading to true when generating recipes
     const ingredientsList = ingredients.map(ingredient => ingredient.ingredientName).join(', ') + ',';
 
     // create new recipe object to send to backend
@@ -97,6 +99,8 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
       setRecipe((prevRecipes) => [...prevRecipes, newAPIRecipe]);
     } catch (error) {
       console.error("Failed to create Recipe on frontend:", error);
+    } finally {
+      setLoading(false); // Set loading to false after recipes are generated
     }
   }
 
@@ -140,24 +144,29 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
               ))}
             </div>
           </div>
-
-          <button className="create-recipes-button" onClick={newRecipe}>Create Recipes</button>
-
-          {recipes.length > 0 ? ( // if there are recipes
-            <div className="full-recipes-container">
-              <h2>Generated Recipes</h2>
-              <div className='recipes-container'>
-                {recipes.map((recipe, index) => (
-                  <div className="recipe-card" key={index}>
-                    <h5>{recipe.title}</h5>
-                    <p>{recipe.instructions}</p>
-                    <button onClick={() => saveRecipe(index)} className="save-recipe-button">Save Recipe</button>
-                  </div>
-                ))}
+          
+          <div className="create-recipes-button-container">
+            <button className="create-recipes-button" onClick={newRecipe}>Generate Recipes</button>
+          </div>
+          {loading ? ( // if loading set is set to true
+            <p>Creating something delicious...</p> 
+          ) : ( // if loading set is false (aka recipes are generated)
+            recipes.length > 0 ? ( // if there are recipes
+              <div className="full-recipes-container">
+                <h3>Generated Recipes</h3>
+                <div className='recipes-container'>
+                  {recipes.map((recipe, index) => (
+                    <div className="recipe-card" key={index}>
+                      <h5>{recipe.title}</h5>
+                      <p>{recipe.instructions}</p>
+                      <button onClick={() => saveRecipe(index)} className="save-recipe-button">Save Recipe</button>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ):(
-            <div></div>
+            ):(
+              <div></div>
+            )
           )}
         </div>
       ) : ( // if zero ingredients
