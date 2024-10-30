@@ -1,5 +1,4 @@
-export interface IngredientData {
-    id: number;
+export interface CreateIngredient {
     ingredientName: string;
     ingredientUser: number | null;
 }

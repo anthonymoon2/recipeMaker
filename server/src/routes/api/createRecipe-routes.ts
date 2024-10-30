@@ -67,9 +67,6 @@ router.post('/', async (req: Request, res: Response) => {
         // create prompt to send to openAI API
         const formattedPrompt: string = await formatPrompt(ingredients);
 
-        // create new recipe
-        //const newRecipe = await Recipe.create({ ingredients, desc, recipeUser});
-
         const generatedRecipe: any = await promptFunc(formattedPrompt);
 
         console.log(`RESULT FROM OPEN API title: ${generatedRecipe.title}`);

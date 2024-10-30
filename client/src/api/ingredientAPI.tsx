@@ -1,4 +1,5 @@
 import { IngredientData } from "../interfaces/IngredientData";
+import { CreateIngredient } from "../interfaces/CreateIngredient";
 import Auth from '../utils/auth';
 
 
@@ -26,8 +27,33 @@ const retrieveIngredients = async (ingredientUserId: number | null ) => {
         return [];
     }  
 }
+// api/ingredients/delete
+const deleteIngredient = async ( body: number ) => {
+    try {
+        // call backend function to delete ingredient
+        console.log(body);
+        const response = await fetch(
+            '/api/ingredients/delete', {
+            method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${Auth.getToken()}`,
+                },
+            body: JSON.stringify({id: body})
+        })
+        const data = response.json();
 
-const createIngredient = async ( body: IngredientData ): Promise<IngredientData> => {
+        if(!response.ok) {
+          throw new Error('invalid API response, check network tab!');
+        }
+    
+        return data;
+    } catch (err) {
+        console.log('Error from Ingredient deletion: ', err);
+    }
+}
+
+const createIngredient = async ( body: CreateIngredient ): Promise<IngredientData> => {
     try {
         // call backend function to create ingredient
         const response = await fetch(
@@ -52,4 +78,4 @@ const createIngredient = async ( body: IngredientData ): Promise<IngredientData>
     }
 }
 
-export { retrieveIngredients, createIngredient };
+export { retrieveIngredients, createIngredient, deleteIngredient };
