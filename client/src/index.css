@@ -42,9 +42,16 @@ nav{
   padding: 0;
   box-sizing: border-box;
 }
+.main-logo{
+  display: flex;
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  text-align: center;
+  font-size: 23px
+}
 .rabbit-logo-image{
-  height: 25px;
-  margin-left: 10px;
+  height: 35px;
+  margin-right: 6px;
 }
 
 /* ===== logged in homepage ===== */
