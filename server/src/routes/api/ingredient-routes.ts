@@ -4,6 +4,22 @@ import { Ingredient } from '../../models/ingredient.js';
 
 const router = express.Router();
 
+// api/ingredients/delete
+router.delete('/delete', async (req: Request, res: Response) => {
+    const { id } = req.body;
+    console.log(req.body);
+    try {
+        Ingredient.destroy({ 
+            where: {
+                id: id,
+            }
+        })
+        res.json({message: "Ingredient deleted!"});
+    } catch (error: any) {
+        res.status(400).json({ error: "could not delete ingredient in backend" });
+    }
+})
+
 // Create a new ingredient and add it to ingredient table
 router.post('/', async (req: Request, res: Response) => {
     const { ingredientName, ingredientUser } = req.body;
@@ -31,7 +47,7 @@ router.get('/:id', async (req: Request, res: Response) => {
                 ingredientUser: userId,
             },
             
-            attributes: ['ingredientName'],
+            attributes: ['ingredientName', 'id'],
         })
         // send back all ingredients associated with user
         res.json(ingredients);

@@ -2,9 +2,10 @@ import auth from '../utils/auth';
 import { UserData } from "../interfaces/UserData";
 import { useState, useEffect } from 'react';
 import { IngredientData } from '../interfaces/IngredientData';
-import { createIngredient, retrieveIngredients } from '../api/ingredientAPI';
-import { createRecipe } from '../api/recipeAPI';
+import { retrieveIngredients, createIngredient, deleteIngredient } from '../api/ingredientAPI';
 import { RecipeData } from '../interfaces/RecipeData';
+import { createRecipe, addRecipeToDatabase} from '../api/recipeAPI';
+import { CreateIngredient } from '../interfaces/CreateIngredient';
 
 interface UserIngredientsProps{
   loggedInUser: UserData;
@@ -43,7 +44,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
     if (!inputValue) return; 
 
     // create new ingredient object
-    const newIngredient: IngredientData = {
+    const newIngredient: CreateIngredient = {
       ingredientName: inputValue,
       ingredientUser: loggedInUser.id
     };
@@ -58,6 +59,12 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
     } catch (error) {
       console.error("Failed to add ingredient:", error);
     }
+  }
+
+  const destroyIngredient = async(ingredientID: number) => {
+    // call api to delete ingredient
+    deleteIngredient(ingredientID);
+    window.location.reload();
   }
 
   // calling openAI api to create recipes 
@@ -76,11 +83,6 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
       // call openAI api
       const generatedRecipe = await createRecipe(newRecipe);
 
-      console.log(`ingredients: ${ingredientsList}`)
-      console.log(`recipe user: ${loggedInUser.id}`);
-      console.log(`recipe title: ${generatedRecipe.title}`);
-      console.log(`recipe instructions: ${generatedRecipe.instructions}`);
-
       // create new recipe object with updated title and instructions received from API
       const newAPIRecipe: RecipeData = {
         ingredients: ingredientsList,
@@ -94,6 +96,15 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
     } catch (error) {
       console.error("Failed to create Recipe on frontend:", error);
     }
+  }
+
+  const saveRecipe = async(index: number) => {
+    // get the recipe object of the recipe that was clicked
+    const savedRecipe = recipes[index]
+
+    console.log(`SAVED RECIPE: ${savedRecipe}`);
+    // call function that sends object to the database
+    addRecipeToDatabase(savedRecipe);
   }
 
   return (
@@ -119,7 +130,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
                       {ingredient.ingredientName}
                   </div>
                   <div className="ingredient-card-delete-button-container">
-                      <button className="ingredient-card-delete-button">x</button>
+                      <button className="ingredient-card-delete-button" onClick={() => destroyIngredient(ingredient.id)}>x</button>
                   </div>
               </div>
             ))}
@@ -135,7 +146,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
                   <div className="recipe-card" key={index}>
                     <h5>{recipe.title}</h5>
                     <p>{recipe.instructions}</p>
-                    <button className="save-recipe-button">Save Recipe</button>
+                    <button onClick={() => saveRecipe(index)} className="save-recipe-button">Save Recipe</button>
                   </div>
                 ))}
               </div>
