@@ -1,5 +1,4 @@
-export interface RecipeData {
-    id: number;
+export interface CreateRecipeData {
     ingredients: string;
     recipeUser: number | null;
     title: string | null;

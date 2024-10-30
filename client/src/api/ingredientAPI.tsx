@@ -31,7 +31,6 @@ const retrieveIngredients = async (ingredientUserId: number | null ) => {
 const deleteIngredient = async ( body: number ) => {
     try {
         // call backend function to delete ingredient
-        console.log(body);
         const response = await fetch(
             '/api/ingredients/delete', {
             method: 'DELETE',

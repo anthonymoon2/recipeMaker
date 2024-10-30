@@ -140,6 +140,30 @@ nav{
   background-color: rgb(14, 115, 14);
   transition: transform 0.3s ease,
 }
+/* ===== my recipes page ===== */
+.saved-full-recipes-container h2{
+  margin-bottom: 50px;
+}
+.saved-recipe-card{
+  background-color: #1a1a1a;
+  color: white;
+  padding: 14px;
+  margin-bottom: 15px;
+}
+.delete-recipe-button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.delete-recipe-button{
+  background-color: #555555;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.delete-recipe-button:hover{
+  background-color: #ff4d4d; 
+}
 /* ===== logged out HOMEPAGE ===== */
 
 .homepage{
@@ -153,7 +177,7 @@ nav{
   height: 400px;
 }
 
-/* ===== HOWTO PAGE ===== */
+/* ===== HOW TO PAGE ===== */
 .how-section{
   margin-top: 280px;
   margin-bottom: 200px;

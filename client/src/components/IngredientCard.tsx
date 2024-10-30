@@ -6,6 +6,7 @@ import { retrieveIngredients, createIngredient, deleteIngredient } from '../api/
 import { RecipeData } from '../interfaces/RecipeData';
 import { createRecipe, addRecipeToDatabase} from '../api/recipeAPI';
 import { CreateIngredient } from '../interfaces/CreateIngredient';
+import { CreateRecipeData } from '../interfaces/CreateRecipeData';
 
 interface UserIngredientsProps{
   loggedInUser: UserData;
@@ -72,7 +73,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
     const ingredientsList = ingredients.map(ingredient => ingredient.ingredientName).join(', ') + ',';
 
     // create new recipe object to send to backend
-    const newRecipe: RecipeData = {
+    const newRecipe: CreateRecipeData = {
       ingredients: ingredientsList,
       recipeUser: loggedInUser.id,
       title: null,
@@ -85,6 +86,7 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
 
       // create new recipe object with updated title and instructions received from API
       const newAPIRecipe: RecipeData = {
+        id: generatedRecipe.id,
         ingredients: ingredientsList,
         recipeUser: loggedInUser.id,
         title: generatedRecipe.title,

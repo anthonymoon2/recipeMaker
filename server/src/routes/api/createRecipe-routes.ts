@@ -73,7 +73,7 @@ router.post('/', async (req: Request, res: Response) => {
         console.log(`RESULT FROM OPEN API instructions: ${generatedRecipe.instructions}`);
 
         // send back generated Recipe to the frontend
-        res.json({ title: generatedRecipe.title, instructions: generatedRecipe.instructions });
+        res.json({ id: generatedRecipe.id, title: generatedRecipe.title, instructions: generatedRecipe.instructions });
     } catch (error: unknown) {
         if (error instanceof Error) {
         console.error('Error:', error.message);
