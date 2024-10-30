@@ -7,7 +7,7 @@ import { RecipeData } from '../interfaces/RecipeData';
 import { createRecipe, addRecipeToDatabase} from '../api/recipeAPI';
 import { CreateIngredient } from '../interfaces/CreateIngredient';
 import { CreateRecipeData } from '../interfaces/CreateRecipeData';
-import rabbitGif from '../../images/rabbit-white.gif';
+import rabbitGif from '../../public/images/rabbit-white.gif';
 
 interface UserIngredientsProps{
   loggedInUser: UserData;

@@ -20,7 +20,7 @@ const retrieveUsers = async () => {
     return [];
   }
 };
-
+/*
 const updateUser = async (id: string, ingredient: string) => {
   try {
     const response = await fetch(`/api/users/${id}`, {
@@ -43,5 +43,5 @@ const updateUser = async (id: string, ingredient: string) => {
     return [];
   }
 }
-
+*/
 export { retrieveUsers };
