@@ -42,10 +42,13 @@ nav{
   padding: 0;
   box-sizing: border-box;
 }
+.rabbit-logo-image{
+  height: 25px;
+  margin-left: 10px;
+}
 
 /* ===== logged in homepage ===== */
-.logged-in-container{
-}
+
 
 .fridge-container{
   background-color:#1a1a1a;
@@ -118,6 +121,10 @@ nav{
   color: white;
 }
 
+.loading-container{
+  display: flex;
+  justify-content: center;
+}
 .full-recipes-container{
   margin-top: 30px;
   background-color: #1a1a1a;

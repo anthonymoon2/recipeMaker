@@ -7,6 +7,7 @@ import { RecipeData } from '../interfaces/RecipeData';
 import { createRecipe, addRecipeToDatabase} from '../api/recipeAPI';
 import { CreateIngredient } from '../interfaces/CreateIngredient';
 import { CreateRecipeData } from '../interfaces/CreateRecipeData';
+import rabbitGif from '../../images/rabbit-white.gif';
 
 interface UserIngredientsProps{
   loggedInUser: UserData;
@@ -149,7 +150,9 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
             <button className="create-recipes-button" onClick={newRecipe}>Generate Recipes</button>
           </div>
           {loading ? ( // if loading set is set to true
-            <p>Creating something delicious...</p> 
+            <div className="loading-container">
+              <img src={rabbitGif} alt="Loading animation" width="150" />
+            </div>
           ) : ( // if loading set is false (aka recipes are generated)
             recipes.length > 0 ? ( // if there are recipes
               <div className="full-recipes-container">
