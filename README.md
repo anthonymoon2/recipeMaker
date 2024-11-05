@@ -52,14 +52,13 @@ DishUp stands out due to its focus on **personalized recipe suggestions**, made 
 ---
 
 ## **Screenshot**
-<!-- Insert a screenshot here -->
-![App Screenshot](#)
+![DishUp Screenshot](./client/public/images/screenshot.png)
 
 ---
 
 ## **Deployed Application**
 
-Check out DishUp live: [DishUp](#)
+Check out DishUp live: [DishUp](https://recipemaker-xwnr.onrender.com/)
 
 ---
 ## **Contributors**
