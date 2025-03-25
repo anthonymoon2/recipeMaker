@@ -63,7 +63,7 @@ Check out DishUp live: [DishUp](https://recipemaker-xwnr.onrender.com/)
 ---
 ## **Contributors**
 
+- [Anthonymoon2](https://github.com/anthonymoon2)
 - [Balshersran](https://github.com/balshersran)
 - [MassiEscalante](https://github.com/MassiEscalante)
 - [Yohana909](https://github.com/yohana909)
-- [Anthonymoon2](https://github.com/anthonymoon2)
