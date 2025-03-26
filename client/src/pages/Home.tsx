@@ -46,26 +46,6 @@ const Home = () => {
                                 <img className="home-food-image" src="../../images/food.png"></img>
                             </div>
                         </div>
-
-                        <div className="how-section">
-                            <h2>How it works</h2>
-
-                            <div className="how-section-steps-container">
-                                <div className="how-section-steps-container-card">
-                                    <h3>1. Sign Up or Log In</h3>
-                                    <p>Create an account or log in.</p>
-                                </div>
-                                <div className="how-section-steps-container-card">
-                                    <h3>2. Add Your Ingredients</h3>
-                                    <p>Enter the ingredients you already have in your fridge.</p>
-                                </div>
-                                <div className="how-section-steps-container-card">
-
-                                    <h3>3. Generate Recipes, save, and Cook</h3>
-                                    <p>Browse personalized recipes that match the ingredients you already have, save recipes you love, follow easy steps to cook. </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 ) : (
                     loggedInUser && <UserIngredientsComponent loggedInUser={loggedInUser} />
