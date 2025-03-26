@@ -2053,3 +2053,31 @@ form [type='radio'] {
     gap: 20px;
   }
 }
+
+
+/* Large smartphones */
+@media screen and (max-width: 768px) {
+  .homepage-left{
+    align-content: center;
+  }
+
+  nav{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .nav-left{
+    font-size: 15px;
+  }
+
+  .nav-right{
+    font-size: 10px;
+  }
+
+  .homepage-left h1 {
+    font-size: 20px;
+  }
+  .home-food-image{
+    height: 200px;
+  }
+}
