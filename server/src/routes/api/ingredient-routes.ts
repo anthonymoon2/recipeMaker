@@ -9,7 +9,7 @@ router.delete('/delete', async (req: Request, res: Response) => {
     const { id } = req.body;
     console.log(req.body);
     try {
-        Ingredient.destroy({ 
+        await Ingredient.destroy({ 
             where: {
                 id: id,
             }
