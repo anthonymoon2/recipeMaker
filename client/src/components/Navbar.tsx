@@ -21,7 +21,9 @@ const Navbar = () => {
       {!loginCheck ? ( // if login check is false (not logged in)
         <header>
           <nav>
-            <Link to="/"> dishUp </Link>
+            <div className="nav-left">
+              <Link to="/"> dishUp </Link>
+            </div>
 
             <div className="nav-right">
               <Link to="/signUp"> Sign Up </Link>
@@ -32,7 +34,9 @@ const Navbar = () => {
       ) : ( // if logged in - change navbar 
         <header>
           <nav>
-            <Link to="/"> dishUp </Link>
+            <div className="nav-left">
+              <Link to="/"> dishUp </Link>
+            </div>
 
             <div className="nav-right">
               <Link to="/MyRecipes"> My Recipes </Link>
