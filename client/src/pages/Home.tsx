@@ -34,6 +34,7 @@ const Home = () => {
     return (
         <>
             {
+                // if not logged in show main home page
                 !loginCheck ? (
                     <div className='login-notice'>
                         <div className='homepage'>
@@ -47,7 +48,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                ) : (
+                ) : ( // if logged in show user home page
                     loggedInUser && <UserIngredientsComponent loggedInUser={loggedInUser} />
                 )}
         </>

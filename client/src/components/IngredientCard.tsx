@@ -22,19 +22,20 @@ const UserIngredientsComponent: React.FC<UserIngredientsProps> = ({ loggedInUser
   // call fetchIngredients function from ingredientsAPI 
   // useEffect loads once when page loads depending on loggedInUser.id
   useEffect(() => {
-    const fetchIngredients = async() => {
+    if (!loggedInUser || !loggedInUser.id || isNaN(loggedInUser.id)) return;
+  
+    const fetchIngredients = async () => {
       try {
-        console.log(`user id : ${loggedInUser.id}`);
         const fetchedIngredients = await retrieveIngredients(loggedInUser.id);
-        // call useState to update ingredients state
         setIngredients(fetchedIngredients);
       } catch (err) {
         console.error("Failed to retrieve ingredients:", err);
       }
-    }
-
+    };
+  
     fetchIngredients();
-  }, [loggedInUser.id]);
+  }, [loggedInUser?.id]);
+  
 
   // function to update when input box when input changes
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
