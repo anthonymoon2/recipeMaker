@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(routes);
 
 // Catch-all route for React Router paths 
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
   res.sendFile(path.resolve('client', 'dist', 'index.html'));
 });
 
