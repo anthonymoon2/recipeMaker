@@ -1,4 +1,4 @@
-# **DishUp** 🍽️ 
+# **DishUp** 
 
 ### **Description**
 DishUp is a full stack recipe discovery website designed to help deliver recipes based off the ingredients you already have at home.
